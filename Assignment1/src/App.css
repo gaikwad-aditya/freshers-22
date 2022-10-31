@@ -1,0 +1,11 @@
+table, th, td {
+      border: 2px solid;
+      border-radius: 10px;
+      border-color: rgb(60, 4, 113);
+    }
+td{
+      text-align: center;
+}
+h1{
+      color: tomato;
+}
