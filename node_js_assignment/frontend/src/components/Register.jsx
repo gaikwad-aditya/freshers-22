@@ -1,10 +1,10 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import axios from 'axios'
 
-function Register(props) {
-      // const history = useHistory()
-      // const id = props.Details.booking[props.Details.booking.length-1].id
-      const id = 0
+function Register() {
+      const navigate = useNavigate()
+
       const [fName, setFName] = useState("")
       const [lName, setLName] = useState("")
       const [address, setAddress] = useState("")
@@ -26,8 +26,9 @@ function Register(props) {
                   alert('Enter same passwords')
             }
             else{
-                  const detail = {id: id+1, cancel : 0, gender: gender, fName: fName, lName : lName, address : address, zip : zip, contact: contact, email : email, password : password}
-                  // props.addUserDetail(detail)
+                  const detail = {fName: fName, lName : lName, address : address, zip : zip, gender: gender, mobNo: contact, eMail : email, password : password}
+                  axios.post('http://localhost:3001/user/signup', detail)
+                  .then((response)=>{});
                   alert("Data is successfully added!")
                   setFName('')
                   setLName('')
@@ -38,7 +39,7 @@ function Register(props) {
                   setPassword('')
                   setConPassword('')
 
-                  // history.push('/userLogin')
+                  navigate('/login')
             }
       }
 
